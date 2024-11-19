@@ -79,6 +79,7 @@ La API que nos dió nuestro cliente es: [Fake Store API](https://fakestoreapi.co
 - [ ] Toasts para notificaciones al usuario
 - [ ] Mejorar estilos
 - [ ] Responsive
+- [ ] Mostrar errores usando un ErrorBoundary
 
 ## Instrucciones y requisitos originales
 
