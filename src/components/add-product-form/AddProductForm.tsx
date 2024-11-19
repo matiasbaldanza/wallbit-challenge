@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react'
 
-import { CartContext } from '../cart/CartContext'
-import { productApi } from '../../data/productApi'
+import { CartContext } from '@/components/cart/CartContext'
+import { productApi } from '@/data/productApi'
 import { z } from 'zod'
 
 const AddProductForm: React.FC = () => {
@@ -14,7 +14,6 @@ const AddProductForm: React.FC = () => {
   const handleAddProduct = async () => {
     try {
       const product = await productApi.getProductById(Number(productId))
-      console.log(product)
 
       dispatch({ type: 'ADD_ITEM', payload: { ...product, quantity } })
       setError(null)

@@ -1,12 +1,12 @@
 import React from 'react'
-import { siteStrings } from '../../siteStrings'
+import { siteStrings } from '@/siteStrings'
 import { Helmet } from 'react-helmet-async'
 
 export const Layout = (
   { children }: { children: React.ReactNode }
 ) => {
   return (
-    <div className='container flex flex-col max-w-lg min-h-screen p-4 mx-auto mt-4'>
+    <div className='container flex flex-col max-w-lg min-h-screen gap-4 p-4 mx-auto mt-4'>
       <Helmet>
         <title>{siteStrings.title}</title>
         <meta name='description' content={siteStrings.description} />

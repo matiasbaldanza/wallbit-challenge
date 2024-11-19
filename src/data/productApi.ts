@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Product, ProductSchema } from '../types/product'
+import { Product, ProductSchema } from '@/types/product'
 import { z } from 'zod'
 
 const BASE_URL = 'https://fakestoreapi.com/products'
