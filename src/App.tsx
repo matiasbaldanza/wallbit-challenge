@@ -14,6 +14,7 @@ function App() {
       <Layout>
         <CartProvider>
           <AddProductForm />
+          <hr className='my-2' />
           <Cart />
         </CartProvider>
       </Layout>

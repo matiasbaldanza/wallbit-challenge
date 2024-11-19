@@ -39,31 +39,41 @@ const AddProductForm: React.FC = () => {
   }
 
   return (
-    <form className='flex w-full gap-2' onSubmit={handleSubmit}>
-      <Input
-        type="number"
-        placeholder="Product ID"
-        value={productId}
-        onChange={(e) => setProductId(
-          Number(e.target.value) >= 1
-            ? e.target.value
-            : "")}
-        className='grow'
-      />
-      <Quantity
-        quantity={quantity}
-        minQuantity={1}
-        setQuantity={setQuantity}
-      />
+    <>
+      <div>
+        <h2 className='text-xl font-bold'>
+          Agregar productos
+        </h2>
+        <p className='text-sm italic text-gray-500 text-balance'>
+          Agrega productos al carrito de compras utilizando el ID de producto y la cantidad que deseas agregar.
+        </p>
+      </div>
+      <form className='flex w-full gap-2' onSubmit={handleSubmit}>
+        <Input
+          type="number"
+          placeholder="Product ID"
+          value={productId}
+          onChange={(e) => setProductId(
+            Number(e.target.value) >= 1
+              ? e.target.value
+              : "")}
+          className='grow'
+        />
+        <Quantity
+          quantity={quantity}
+          minQuantity={1}
+          setQuantity={setQuantity}
+        />
 
-      <Button
-        type="submit"
-        disabled={!productId || Number(productId) < 1}
-      >
-        {cartText.addItem}
-      </Button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-    </form>
+        <Button
+          type="submit"
+          disabled={!productId || Number(productId) < 1}
+        >
+          {cartText.addItem}
+        </Button>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+      </form>
+    </>
   )
 }
 

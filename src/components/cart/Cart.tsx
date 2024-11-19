@@ -24,7 +24,14 @@ const Cart: React.FC = () => {
       </h2>
 
       {items.length === 0
-        ? (<p>{cartText.emptyCart}</p>)
+        ? cartText.emptyCart.map((text, index) => (
+          <p
+            key={index}
+            className='text-sm text-gray-500 text-balance'
+          >
+            {text}
+          </p>
+        ))
         : (
           <ul className='flex flex-col gap-4'>
             {items.map((item, index) => (

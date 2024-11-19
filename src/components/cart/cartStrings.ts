@@ -2,7 +2,10 @@ const cartText = {
   addItem: 'Agregar',
   clearCart: 'Vaciar carrito',
   checkout: 'Finalizar compra',
-  emptyCart: 'El carrito está vacío',
+  emptyCart: [
+    'El carrito de compras está vacío.',
+    'Intenta agregar productos arriba utilizando el ID de producto y la cantidad que deseas agregar.'
+  ],
   removeItem: 'Eliminar',
   title: 'Carrito de compras',
   summary: {
