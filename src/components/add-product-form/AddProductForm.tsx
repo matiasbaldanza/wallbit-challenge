@@ -33,8 +33,8 @@ const AddProductForm: React.FC = () => {
   }
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    handleAddProduct();
+    e.preventDefault()
+    handleAddProduct()
   }
 
   return (
@@ -43,7 +43,10 @@ const AddProductForm: React.FC = () => {
         type="number"
         placeholder="Product ID"
         value={productId}
-        onChange={(e) => setProductId(e.target.value)}
+        onChange={(e) => setProductId(
+          Number(e.target.value) >= 1
+            ? e.target.value
+            : "")}
         className='grow'
       />
       <Input
@@ -53,7 +56,11 @@ const AddProductForm: React.FC = () => {
         onChange={(e) => setQuantity(Number(e.target.value))}
         className='w-auto'
       />
-      <Button type="submit">
+
+      <Button
+        type="submit"
+        disabled={!productId || Number(productId) < 1}
+      >
         {cartText.addItem}
       </Button>
       {error && <p style={{ color: "red" }}>{error}</p>}
