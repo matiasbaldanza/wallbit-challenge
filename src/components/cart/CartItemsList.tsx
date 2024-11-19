@@ -2,8 +2,9 @@ import { useContext } from 'react'
 import { CartContext } from './CartContext'
 import { Button } from '@/components/ui/button'
 import { TrashIcon } from 'lucide-react'
-
+import { CurrencyFormatted } from '../CurrencyFormatted'
 import { cartText } from './cartStrings'
+import { Quantity } from '../quantity/Quantity'
 
 import {
   Table,
@@ -22,6 +23,13 @@ function CartItemsList() {
 
   const handleRemoveItem = (id: string) => {
     dispatch({ type: 'REMOVE_ITEM', payload: id })
+  }
+
+  const handleUpdateQuantity = (id: string, newQuantity: number) => {
+    dispatch({
+      type: 'UPDATE_ITEM_QUANTITY',
+      payload: { id: id.toString(), quantity: newQuantity }
+    })
   }
 
   return (
@@ -53,8 +61,16 @@ function CartItemsList() {
               <TableCell className='text-xs text-left line-clamp-2 text-balance'>
                 {item.title}
               </TableCell>
-              <TableCell>{item.price}</TableCell>
-              <TableCell>{item.quantity}</TableCell>
+              <TableCell className='w-20'>
+                {CurrencyFormatted(item.price)}
+              </TableCell>
+              <TableCell>
+                <Quantity
+                  quantity={item.quantity}
+                  className='w-20'
+                  setQuantity={(newQuantity) => handleUpdateQuantity(item.id.toString(), newQuantity)}
+                />
+              </TableCell>
               <TableCell>
                 <Button
                   variant='destructive'

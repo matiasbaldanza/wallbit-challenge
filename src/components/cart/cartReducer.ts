@@ -12,6 +12,7 @@ export type CartAction =
   | { type: 'REMOVE_ITEM', payload: string }
   | { type: 'INCREASE_ITEM_QUANTITY', payload: { id: string, quantity: number } }
   | { type: 'DECREASE_ITEM_QUANTITY', payload: string }
+  | { type: 'UPDATE_ITEM_QUANTITY', payload: { id: string, quantity: number } }
 
 export const initialState: CartState = {
   items: [],
@@ -80,6 +81,15 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
       return {
         ...state,
         items: updatedItems
+      }
+    }
+
+    case 'UPDATE_ITEM_QUANTITY': {
+      return {
+        ...state,
+        items: state.items.map(item =>
+          item.id === Number(action.payload.id) ? { ...item, quantity: action.payload.quantity } : item
+        )
       }
     }
 
