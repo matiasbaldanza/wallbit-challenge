@@ -20,7 +20,7 @@ export const initialState: CartState = {
 
 // Items with zero quantity are not added to the cart
 const filterZeroQuantityItems = (items: CartItem[]) => {
-  return items.filter(item => item.quantity > 0);
+  return items.filter(item => item.quantity > 0)
 }
 
 export const cartReducer = (state: CartState, action: CartAction): CartState => {
@@ -49,9 +49,9 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
         return {
           ...state,
           items: filterZeroQuantityItems([...state.items, { ...action.payload, quantity: action.payload.quantity }])
-        };
+        }
       }
-      return state; // Do not add item if quantity is zero
+      return state // Do not add item if quantity is zero
     }
 
     case 'REMOVE_ITEM':
@@ -75,12 +75,12 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
         item.id === Number(action.payload)
           ? { ...item, quantity: item.quantity - 1 }
           : item
-      ));
+      ))
 
       return {
         ...state,
         items: updatedItems
-      };
+      }
     }
 
     default:

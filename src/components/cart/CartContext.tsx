@@ -25,9 +25,9 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
     const savedCart = localStorage.getItem('cart')
     if (!savedCart) return
 
-    const parsedCart = JSON.parse(savedCart);
+    const parsedCart = JSON.parse(savedCart)
     // Ensure the parsed cart is valid before dispatching
-    if (!Array.isArray(parsedCart.items) || parsedCart.items.length === 0) return; // Guard clause for invalid cart
+    if (!Array.isArray(parsedCart.items) || parsedCart.items.length === 0) return // Guard clause for invalid cart
 
     dispatch({ type: 'LOAD_CART', payload: parsedCart })
   }, [])
