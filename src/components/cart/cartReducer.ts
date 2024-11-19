@@ -33,16 +33,15 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
     case 'ADD_ITEM': {
       // If the product already exists in the cart, update the quantity
       const itemExists = state.items.some(item => item.id === action.payload.id)
-
+      if (itemExists) {
+        return cartReducer(
+          state,
+          { type: 'INCREASE_ITEM_QUANTITY', payload: action.payload.id.toString() }
+        )
+      }
       return {
         ...state,
-        items: itemExists
-          ? state.items.map(item =>
-            item.id === action.payload.id
-              ? { ...item, quantity: item.quantity + 1 }
-              : item
-          )
-          : [...state.items, { ...action.payload, quantity: 1 }]
+        items: [...state.items, { ...action.payload, quantity: 1 }]
       }
     }
 
