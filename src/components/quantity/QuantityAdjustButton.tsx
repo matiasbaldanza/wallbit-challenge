@@ -14,7 +14,7 @@ const QuantityAdjustButton = ({
   className,
   children
 }: QuantityAdjustButtonProps) => {
-  const defaultClassName = 'absolute h-[80%] w-[10%]'
+  const defaultClassName = 'absolute h-2/3 w-[10%] hover:bg-blue-500/5'
 
   return (
     <Button
