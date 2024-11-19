@@ -1,14 +1,14 @@
-import { CartItem } from './Cart'
+import { CartItemI } from './Cart'
 
 export type CartState = {
-  items: CartItem[]
+  items: CartItemI[]
   createdAt: Date
 }
 
 export type CartAction =
   | { type: 'LOAD_CART', payload: CartState }
   | { type: 'CLEAR_CART' }
-  | { type: 'ADD_ITEM', payload: CartItem }
+  | { type: 'ADD_ITEM', payload: CartItemI }
   | { type: 'REMOVE_ITEM', payload: string }
   | { type: 'INCREASE_ITEM_QUANTITY', payload: { id: string, quantity: number } }
   | { type: 'DECREASE_ITEM_QUANTITY', payload: string }
@@ -19,7 +19,7 @@ export const initialState: CartState = {
 }
 
 // Items with zero quantity are not added to the cart
-const filterZeroQuantityItems = (items: CartItem[]) => {
+const filterZeroQuantityItems = (items: CartItemI[]) => {
   return items.filter(item => item.quantity > 0)
 }
 

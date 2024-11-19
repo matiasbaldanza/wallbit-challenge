@@ -1,9 +1,9 @@
 import { createContext, useReducer, useEffect } from 'react'
 import { CartAction, cartReducer, initialState } from './cartReducer'
-import { CartItem } from './Cart'
+import { CartItemI } from './Cart'
 
 type CartState = {
-  items: CartItem[]
+  items: CartItemI[]
   createdAt: Date
 }
 
