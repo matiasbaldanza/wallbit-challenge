@@ -18,6 +18,11 @@ export const initialState: CartState = {
   createdAt: new Date()
 }
 
+// Items with zero quantity are not added to the cart
+const filterZeroQuantityItems = (items: CartItem[]) => {
+  return items.filter(item => item.quantity > 0);
+}
+
 export const cartReducer = (state: CartState, action: CartAction): CartState => {
   switch (action.type) {
     case 'LOAD_CART':
@@ -39,10 +44,14 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
           { type: 'INCREASE_ITEM_QUANTITY', payload: { id: action.payload.id.toString(), quantity: action.payload.quantity } }
         )
       }
-      return {
-        ...state,
-        items: [...state.items, { ...action.payload, quantity: action.payload.quantity }]
-      };
+      // Only add item if quantity is greater than zero
+      if (action.payload.quantity > 0) {
+        return {
+          ...state,
+          items: filterZeroQuantityItems([...state.items, { ...action.payload, quantity: action.payload.quantity }])
+        };
+      }
+      return state; // Do not add item if quantity is zero
     }
 
     case 'REMOVE_ITEM':
@@ -61,15 +70,18 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
         )
       }
 
-    case 'DECREASE_ITEM_QUANTITY':
+    case 'DECREASE_ITEM_QUANTITY': {
+      const updatedItems = filterZeroQuantityItems(state.items.map(item =>
+        item.id === Number(action.payload)
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      ));
+
       return {
         ...state,
-        items: state.items.map(item =>
-          item.id === Number(action.payload)
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        )
-      }
+        items: updatedItems
+      };
+    }
 
     default:
       return state
