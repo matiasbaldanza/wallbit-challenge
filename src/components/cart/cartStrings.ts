@@ -13,6 +13,13 @@ const cartText = {
     products: 'Productos',
     total: 'Total',
   },
+  id: 'ID',
+  image: 'Imagen',
+  product: 'Producto',
+  quantity: 'Cantidad',
+  remove: 'Eliminar',
+  unitPrice: 'Precio',
+  actions: 'Acciones'
 }
 
 export { cartText }
