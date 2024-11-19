@@ -41,7 +41,7 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
       }
       return {
         ...state,
-        items: [...state.items, { ...action.payload, quantity: 1 }]
+        items: [...state.items, { ...action.payload, quantity: action.payload.quantity }]
       }
     }
 
