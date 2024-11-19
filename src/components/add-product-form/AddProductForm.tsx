@@ -79,8 +79,8 @@ const AddProductForm: React.FC<AddProductFormProps> = ({
         >
           {cartText.addItem}
         </Button>
-        {error && <p style={{ color: "red" }}>{error}</p>}
       </form>
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </section>
   )
 }
