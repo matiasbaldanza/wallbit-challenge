@@ -2,9 +2,13 @@ import { useContext } from 'react'
 import { CartContext } from './CartContext'
 import { Product } from '@/types/product'
 
+import { Button, buttonVariants } from '../ui/button'
+
 export interface CartItem extends Product {
   quantity: number
 }
+
+import { cartText } from './cartStrings'
 
 const Cart: React.FC = () => {
   const { state, dispatch } = useContext(CartContext)
@@ -19,15 +23,18 @@ const Cart: React.FC = () => {
   }
 
   return (
-    <div>
-      <h2 className='text-xl font-bold'>Your Cart</h2>
-      <button onClick={handleClearCart}>Clear Cart</button>
+    <div className='flex flex-col gap-4'>
+      <h2 className='text-xl font-bold'>
+        {cartText.title}
+      </h2>
+
       {items.length === 0
-        ? (<p>Your cart is empty</p>)
+        ? (<p>{cartText.emptyCart}</p>)
         : (
-          <ul>
+          <ul className='flex flex-col gap-4'>
             {items.map((item, index) => (
               <li key={`${index}-${item.id}`}>
+                <p>ID: {item.id}</p>
                 <p>Product: {item.title}</p>
                 <p>Quantity: {item.quantity}</p>
                 <button onClick={() => handleRemoveItem(item.id.toString())}>
@@ -37,6 +44,14 @@ const Cart: React.FC = () => {
             ))}
           </ul>
         )}
+      {items.length > 0 && (
+        <Button
+          onClick={handleClearCart}
+          className={buttonVariants({ variant: 'destructive' })}
+        >
+          {cartText.clearCart}
+        </Button>
+      )}
     </div>
   )
 }

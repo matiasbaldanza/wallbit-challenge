@@ -7,6 +7,8 @@ import { z } from 'zod'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
+import { cartText } from '@/components/cart/cartStrings'
+
 
 const AddProductForm: React.FC = () => {
   const [productId, setProductId] = useState<string>("")
@@ -52,7 +54,7 @@ const AddProductForm: React.FC = () => {
         className='w-auto'
       />
       <Button type="submit">
-        Add to Cart
+        {cartText.addItem}
       </Button>
       {error && <p style={{ color: "red" }}>{error}</p>}
     </form>
