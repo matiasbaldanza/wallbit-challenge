@@ -1,12 +1,16 @@
 import './App.css'
+import { AddProductForm } from './components/add-product-form/AddProductForm'
+import { Cart } from './components/cart/Cart'
+import { CartProvider } from './components/cart/CartContext'
 
 function App() {
 
   return (
     <>
-      <div>
-        <p className="text-2xl">Hola Mundo!</p>
-      </div>
+      <CartProvider>
+        <AddProductForm />
+        <Cart />
+      </CartProvider>
     </>
   )
 }
