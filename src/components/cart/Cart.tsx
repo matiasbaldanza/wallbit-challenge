@@ -2,13 +2,12 @@ import { useContext } from 'react'
 import { CartContext } from './CartContext'
 import { Product } from '@/types/product'
 
-import { Button, buttonVariants } from '../ui/button'
-
 export interface CartItem extends Product {
   quantity: number
 }
 
 import { cartText } from './cartStrings'
+import { CartSummary } from './CartSummary'
 
 const Cart: React.FC = () => {
   const { state, dispatch } = useContext(CartContext)
@@ -16,10 +15,6 @@ const Cart: React.FC = () => {
 
   const handleRemoveItem = (id: string) => {
     dispatch({ type: 'REMOVE_ITEM', payload: id })
-  }
-
-  const handleClearCart = () => {
-    dispatch({ type: 'CLEAR_CART' })
   }
 
   return (
@@ -45,12 +40,7 @@ const Cart: React.FC = () => {
           </ul>
         )}
       {items.length > 0 && (
-        <Button
-          onClick={handleClearCart}
-          className={buttonVariants({ variant: 'destructive' })}
-        >
-          {cartText.clearCart}
-        </Button>
+        <CartSummary />
       )}
     </div>
   )
