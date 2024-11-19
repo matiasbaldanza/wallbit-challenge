@@ -4,6 +4,10 @@ import { CartContext } from '@/components/cart/CartContext'
 import { productApi } from '@/data/productApi'
 import { z } from 'zod'
 
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+
+
 const AddProductForm: React.FC = () => {
   const [productId, setProductId] = useState<string>("")
   const [quantity, setQuantity] = useState<number>(1)
@@ -26,23 +30,32 @@ const AddProductForm: React.FC = () => {
     }
   }
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleAddProduct();
+  }
+
   return (
-    <div>
-      <input
+    <form className='flex w-full gap-2' onSubmit={handleSubmit}>
+      <Input
         type="number"
         placeholder="Product ID"
         value={productId}
         onChange={(e) => setProductId(e.target.value)}
+        className='grow'
       />
-      <input
+      <Input
         type="number"
         placeholder="Quantity"
         value={quantity}
         onChange={(e) => setQuantity(Number(e.target.value))}
+        className='w-auto'
       />
-      <button onClick={handleAddProduct}>Add to Cart</button>
+      <Button type="submit">
+        Add to Cart
+      </Button>
       {error && <p style={{ color: "red" }}>{error}</p>}
-    </div>
+    </form>
   )
 }
 
