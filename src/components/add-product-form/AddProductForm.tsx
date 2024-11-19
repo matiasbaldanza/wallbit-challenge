@@ -3,6 +3,7 @@ import { useState, useContext } from 'react'
 import { CartContext } from '@/components/cart/CartContext'
 import { productApi } from '@/data/productApi'
 import { z } from 'zod'
+import { cn } from '@/lib/utils'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -10,13 +11,20 @@ import { Quantity } from '@/components/quantity/Quantity'
 
 import { cartText } from '@/components/cart/cartStrings'
 
+interface AddProductFormProps {
+  className?: string
+}
 
-const AddProductForm: React.FC = () => {
+const AddProductForm: React.FC<AddProductFormProps> = ({
+  className
+}) => {
   const [productId, setProductId] = useState<string>("")
   const [quantity, setQuantity] = useState<number>(1)
   const [error, setError] = useState<string | null>(null)
 
   const { dispatch } = useContext(CartContext)
+
+  const baseClassName = 'flex flex-col gap-4 p-4 bg-white rounded-lg shadow'
 
   const handleAddProduct = async () => {
     try {
@@ -39,7 +47,7 @@ const AddProductForm: React.FC = () => {
   }
 
   return (
-    <>
+    <section className={cn(baseClassName, className)}>
       <div>
         <h2 className='text-xl font-bold'>
           Agregar productos
@@ -73,7 +81,7 @@ const AddProductForm: React.FC = () => {
         </Button>
         {error && <p style={{ color: "red" }}>{error}</p>}
       </form>
-    </>
+    </section>
   )
 }
 

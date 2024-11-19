@@ -3,11 +3,21 @@ import { cartText } from './cartStrings'
 import { CartContext } from './CartContext'
 import { Button, buttonVariants } from '../ui/button'
 import { CurrencyFormatted } from '../CurrencyFormatted'
+import { cn } from '@/lib/utils'
 
-function CartSummary() {
+interface CartSummaryProps {
+  className?: string
+}
+
+function CartSummary({
+  className
+}: CartSummaryProps) {
   const { state, dispatch } = useContext(CartContext)
   const { items } = state
   const totalAmount = items.reduce((acc, item) => acc + item.price * item.quantity, 0)
+  const baseClassName = 'flex flex-col gap-4 p-4 bg-white rounded-lg shadow'
+
+
   const handleClearCart = () => {
     dispatch({ type: 'CLEAR_CART' })
   }
@@ -19,7 +29,7 @@ function CartSummary() {
   }
 
   return (
-    <div className='flex flex-col gap-2'>
+    <div className={cn(baseClassName, className)}>
       <h3
         className='text-lg font-bold'
       >

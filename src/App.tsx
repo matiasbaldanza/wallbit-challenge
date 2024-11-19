@@ -13,9 +13,10 @@ function App() {
     <HelmetProvider>
       <Layout>
         <CartProvider>
-          <AddProductForm />
-          <hr className='my-2' />
-          <Cart />
+          <div className='flex flex-col gap-4'>
+            <AddProductForm />
+            <Cart />
+          </div>
         </CartProvider>
       </Layout>
     </HelmetProvider>

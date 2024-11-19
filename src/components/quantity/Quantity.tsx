@@ -1,12 +1,14 @@
 import { Input } from "../ui/input"
 import { QuantityAdjustButton } from "./QuantityAdjustButton"
 import { PlusIcon, MinusIcon } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 interface QuantityProps {
   quantity: number
   minQuantity?: number
   maxQuantity?: number
   setQuantity: (quantity: number) => void
+  className?: string
 }
 
 const handleDecrement = (e: React.MouseEvent<HTMLButtonElement>, quantity: number, minQuantity: number) => {
@@ -46,9 +48,11 @@ function Quantity({
   minQuantity = 1,
   maxQuantity,
   setQuantity,
+  className,
 }: QuantityProps) {
+  const baseClassName = 'w-32'
   return (
-    <div className='relative flex items-center w-full gap-2'>
+    <div className={cn('relative flex items-center w-full gap-2', baseClassName, className)}>
       <DecrementButton
         onClick={(e) => setQuantity(
           handleDecrement(e, quantity, minQuantity)
