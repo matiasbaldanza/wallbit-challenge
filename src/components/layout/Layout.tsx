@@ -26,6 +26,7 @@ export const Layout = (
         <p className='text-sm text-gray-500'>
           {siteStrings.footer.copyright.replace('{year}', new Date().getFullYear().toString())}
         </p>
+        {/* Format links from markdown and make them open in a new tab */}
         <ReactMarkdown
           className='text-xs text-gray-500'
           components={{

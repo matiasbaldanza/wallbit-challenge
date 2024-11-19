@@ -11,8 +11,6 @@ const CurrencyFormatted = (amount: number) => {
   const cents = Math.round((amount - wholeNumber) * 100)
   const currencySymbol = '$'
 
-  console.log('Cents:', cents)
-
   return (
     <span>
       {currencySymbol}{" "}
