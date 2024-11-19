@@ -4,6 +4,6 @@ export const siteStrings = {
   description: 'A fake store for the Wallbit Junior Frontend Challenge',
   footer: {
     copyright: '© {year} Tienda - El Topo',
-    author: 'MatíasBaldanza - challenge de Frontend de Wallbit'
+    author: 'Hecho por [MatíasBaldanza](https://twitter.com/matiasbaldanza) para el challenge de Frontend de Wallbit - [REPO](https://github.com/matiasbaldanza/wallbit-challenge)'
   }
 }

@@ -1,6 +1,8 @@
 import React from 'react'
 import { siteStrings } from '@/siteStrings'
 import { Helmet } from 'react-helmet-async'
+import ReactMarkdown from 'react-markdown'
+import { ArrowUpRightIcon } from 'lucide-react'
 
 export const Layout = (
   { children }: { children: React.ReactNode }
@@ -24,9 +26,24 @@ export const Layout = (
         <p className='text-sm text-gray-500'>
           {siteStrings.footer.copyright.replace('{year}', new Date().getFullYear().toString())}
         </p>
-        <p className='text-xs text-gray-500'>
+        <ReactMarkdown
+          className='text-xs text-gray-500'
+          components={{
+            a: ({ children, href }) => {
+              const text = React.Children.toArray(children).join('')
+              return (
+                <a
+                  href={href}
+                  target='_blank' rel='noopener noreferrer' className='text-blue-500 hover:underline'>
+                  {text}
+                  <ArrowUpRightIcon className='inline mb-0.5 w-3 h-3' />
+                </a>
+              )
+            }
+          }}
+        >
           {siteStrings.footer.author}
-        </p>
+        </ReactMarkdown>
       </footer>
     </div>
   )
