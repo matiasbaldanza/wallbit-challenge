@@ -6,6 +6,7 @@ import { z } from 'zod'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Quantity } from '@/components/quantity/Quantity'
 
 import { cartText } from '@/components/cart/cartStrings'
 
@@ -49,12 +50,10 @@ const AddProductForm: React.FC = () => {
             : "")}
         className='grow'
       />
-      <Input
-        type="number"
-        placeholder="Quantity"
-        value={quantity}
-        onChange={(e) => setQuantity(Number(e.target.value))}
-        className='w-auto'
+      <Quantity
+        quantity={quantity}
+        minQuantity={1}
+        setQuantity={setQuantity}
       />
 
       <Button
