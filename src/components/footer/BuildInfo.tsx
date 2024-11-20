@@ -17,11 +17,11 @@ function BuildInfo() {
       {mode === 'development'
         ? (
           <p className='text-xs text-gray-400'>
-            Mode: {mode}
+            Mode: {mode} - Commit: {commitSha} - Build: {buildDate}
           </p>
         ) : (
           <p className='text-xs text-gray-400'>
-            Mode: {mode} - Commit: {commitSha} - Build: {buildDate}
+            Mode: {mode}
           </p>
         )
 
