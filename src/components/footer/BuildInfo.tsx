@@ -5,6 +5,8 @@
 // VITE_COMMIT_SHA=\$VERCEL_GIT_COMMIT_SHA
 // VITE_BUILD_DATE=\$(date -u +'%Y-%m-%dT%H:%M:%SZ')
 
+// TODO: BuildInfo doesn't resolve vars on deployment - find workaround without commit hooks, if possible
+
 function BuildInfo() {
   // Deploy info(Vercel)
   const mode = import.meta.env.MODE
