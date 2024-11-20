@@ -1,7 +1,6 @@
 import { useContext } from 'react'
 import { CartContext } from './CartContext'
 import { Button } from '@/components/ui/button'
-import { TrashIcon } from 'lucide-react'
 import { CurrencyFormatted } from '../CurrencyFormatted'
 import { cartText } from './cartStrings'
 import { Quantity } from '../quantity/Quantity'
@@ -34,13 +33,13 @@ function CartItemsList() {
     <>
       <Table>
         <TableHeader>
-          <TableRow>
+          <TableRow className='[&>*]:text-center'>
             <TableHead>{cartText.id}</TableHead>
             <TableHead>{cartText.image}</TableHead>
-            <TableHead>{cartText.product}</TableHead>
+            <TableHead className='!text-left'>{cartText.product}</TableHead>
             <TableHead>{cartText.unitPrice}</TableHead>
             <TableHead>{cartText.quantity}</TableHead>
-            <TableHead>{cartText.actions}</TableHead>
+            <TableHead>{cartText.productTotal}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -56,8 +55,15 @@ function CartItemsList() {
                   className='object-contain aspect-square max-'
                 />
               </TableCell>
-              <TableCell className='text-xs text-left line-clamp-2 text-balance'>
-                {item.title}
+              <TableCell className='flex flex-col gap-1 text-xs text-left '>
+                <p className='line-clamp-2 text-balance'>{item.title}</p>
+                <Button
+                  variant='link'
+                  className='py-0 text-xs leading-snug text-destructive w-fit h-fit'
+                  onClick={() => handleRemoveItem(item.id.toString())}
+                >
+                  {cartText.remove}
+                </Button>
               </TableCell>
               <TableCell className='w-20'>
                 {CurrencyFormatted(item.price)}
@@ -71,13 +77,10 @@ function CartItemsList() {
                   setQuantity={(newQuantity) => handleUpdateQuantity(item.id.toString(), newQuantity)}
                 />
               </TableCell>
-              <TableCell>
-                <Button
-                  variant='destructive'
-                  onClick={() => handleRemoveItem(item.id.toString())}
-                >
-                  <TrashIcon className='w-2 h-4' />
-                </Button>
+              <TableCell className='min-w-24'>
+                <span className='text-base font-semibold text-right'>
+                  {CurrencyFormatted(item.price * item.quantity)}
+                </span>
               </TableCell>
             </TableRow>
           ))}
