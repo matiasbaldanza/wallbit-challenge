@@ -17,9 +17,7 @@ Asegúrate de tener instalado Node.js y npm en tu máquina.
 
 ## Deploy de prueba
 
-https://better-coins-love.loca.lt/ 
-
-Pide contraseña, que se puede ver accediendo a https://loca.lt/mytunnelpassword
+https://wallbit-challenge-1atozg5df-matias-baldanzas-projects.vercel.app/
 
 ## Instalación
 
