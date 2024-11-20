@@ -65,6 +65,12 @@ function Quantity({
         max={maxQuantity}
         value={quantity}
         onChange={(e) => setQuantity(Number(e.target.value))}
+        onKeyDown={(e) => {
+          // Allow Enter to propagate to parent form
+          if (e.key === "Enter") {
+            return
+          }
+        }}
         className='w-full px-2 text-center [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none'
         aria-label='Quantity'
       />

@@ -56,7 +56,16 @@ const AddProductForm: React.FC<AddProductFormProps> = ({
           Agrega productos al carrito de compras utilizando el ID de producto y la cantidad que deseas agregar.
         </p>
       </div>
-      <form className='flex w-full gap-2' onSubmit={handleSubmit}>
+      <form
+        id='add-product-form'
+        className='flex w-full gap-2'
+        onSubmit={handleSubmit}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            handleSubmit(e)
+          }
+        }}
+      >
         <Input
           type="number"
           placeholder="Product ID"
@@ -66,6 +75,9 @@ const AddProductForm: React.FC<AddProductFormProps> = ({
               ? e.target.value
               : "")}
           className='grow'
+          onKeyDown={(e) =>
+            e.key === "Enter" && !e.defaultPrevented && handleSubmit(e)
+          }
         />
         <Quantity
           quantity={quantity}
