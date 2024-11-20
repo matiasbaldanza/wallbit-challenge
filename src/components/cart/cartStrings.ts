@@ -19,7 +19,8 @@ const cartText = {
   quantity: 'Cantidad',
   remove: 'Eliminar',
   unitPrice: 'Precio',
-  actions: 'Acciones'
+  actions: 'Acciones',
+  cartCreatedAt: 'Carrito creado el:'
 }
 
 export { cartText }

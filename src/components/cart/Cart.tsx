@@ -38,8 +38,26 @@ const Cart: React.FC<CartProps> = ({
               {text}
             </p>
           ))
-          : <CartItemsList />
-        }
+          : (
+            <>
+              <CartItemsList />
+              <p className='text-xs text-gray-500 text-balance'>
+                <span className='block sm:inline'>{cartText.cartCreatedAt}</span>
+                <span className='block font-bold sm:inline'>
+                  {" "}
+                  {new Date(state.createdAt)
+                    .toLocaleString("es-AR", {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                      hour: '2-digit',
+                      minute: '2-digit'
+                    })
+                  }
+                </span>
+              </p>
+            </>
+          )}
       </div>
       {items.length > 0 && (
         <CartSummary />
