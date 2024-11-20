@@ -19,7 +19,7 @@ function Footer() {
         </a>{" "}
         para el challenge de Frontend de Wallbit - {" "}
         <a
-          href="https://github.com/matiasbaldanza/wallbit-challenge"
+          href="https://github.com/matiasbaldanza/wallbit-challenge/tree/cart-matias"
           target='_blank' rel='noopener noreferrer' className='text-blue-500 hover:underline'>
           REPO
           <ArrowUpRightIcon className='inline mb-0.5 w-3 h-3' />
