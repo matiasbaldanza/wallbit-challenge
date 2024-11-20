@@ -19,8 +19,6 @@ function CartItemsList() {
   const { state, dispatch } = useContext(CartContext)
   const { items } = state
 
-  console.log('Items', items)
-
   const handleRemoveItem = (id: string) => {
     dispatch({ type: 'REMOVE_ITEM', payload: id })
   }
@@ -28,7 +26,7 @@ function CartItemsList() {
   const handleUpdateQuantity = (id: string, newQuantity: number) => {
     dispatch({
       type: 'UPDATE_ITEM_QUANTITY',
-      payload: { id: id.toString(), quantity: newQuantity }
+      payload: { id, quantity: newQuantity }
     })
   }
 
@@ -67,6 +65,8 @@ function CartItemsList() {
               <TableCell>
                 <Quantity
                   quantity={item.quantity}
+                  minQuantity={1}
+                  maxQuantity={10}
                   className='w-20'
                   setQuantity={(newQuantity) => handleUpdateQuantity(item.id.toString(), newQuantity)}
                 />

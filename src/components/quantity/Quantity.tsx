@@ -61,6 +61,8 @@ function Quantity({
 
       <Input
         type="number"
+        min={minQuantity}
+        max={maxQuantity}
         value={quantity}
         onChange={(e) => setQuantity(Number(e.target.value))}
         className='w-full px-2 text-center [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none'
