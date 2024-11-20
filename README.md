@@ -74,13 +74,19 @@ La API que nos dió nuestro cliente es: [Fake Store API](https://fakestoreapi.co
 - [X] Formato personalido de precios
 - [X] Botón para vaciar el carrito
 
-## Pendientes
+## Pendientes/TODOs
 
+- [ ] Deploy (falla el build en Vercel, posiblemente por versión de Node)
 - [ ] Tests (no llegué)
+- [ ] Unificar validaciones/mensajes de error con Zod (ahora valida con Zod en el fetch, pero no gestiona los mensajes de error, que están en un try/catch, el carrito no tiene schema ni validación completa)
+- [ ] Implementar notificaciones de errores al usuario (ahora hay mensaje genérico con dos posible valores, y se mantiene la validación nativa del browser en los inputs)
+- [ ] Ver layout shifts / lazy loading
 - [ ] Toasts para notificaciones al usuario
 - [ ] Mejorar estilos
+- [ ] Animaciones
 - [ ] Responsive
 - [ ] Mostrar errores usando un ErrorBoundary
+- [ ] Bug de persistencia carrito (el carrito se preserva en múltiples refresh de la página, pero si se hacen multiples refresh de la página rápidos, se pierde el carrito)
 
 ## Instrucciones y requisitos originales
 
