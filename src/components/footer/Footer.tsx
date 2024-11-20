@@ -1,9 +1,10 @@
 import { siteStrings } from '@/siteStrings'
 import { ArrowUpRightIcon } from 'lucide-react'
+import { BuildInfo } from './BuildInfo'
 
 function Footer() {
   return (
-    <footer className='flex flex-col items-center justify-center gap-1 my-4 text-center text-balance'>
+    < footer className='flex flex-col items-center justify-center gap-1 my-4 text-center text-balance' >
       <p className='text-sm text-gray-500'>
         {siteStrings.footer.copyright.replace('{year}', new Date().getFullYear().toString())}
       </p>
@@ -25,6 +26,7 @@ function Footer() {
           <ArrowUpRightIcon className='inline mb-0.5 w-3 h-3' />
         </a>
       </p>
+      <BuildInfo />
     </footer>
   )
 }
